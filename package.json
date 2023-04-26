@@ -1,0 +1,17 @@
+{
+  "name": "github-actions-testing-grounds",
+  "version": "1.0.0",
+  "description": "This is my testing ground for learning about Github actions (and ci/cd/build automation generally).",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.5.0"
+  }
+}
