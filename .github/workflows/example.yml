@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "test-00" ]
+    branches: [ "test-01-containers" ]
   pull_request:
-    branches: [ "test-00" ]
+    branches: [ "test-01-containers" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,10 +39,11 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Image
+        run: podman build -f test.dockerfile -t test-01-containers.image
+
+      - name: Run Test Container
+        run: podman run test-01-containers.image
