@@ -28,14 +28,14 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build Deployment Image
-        run: podman build -f deployent.dockerfile -t deployment-02-artifacts.image
+        run: podman build -f deployment.dockerfile -t deployment-02-artifacts.image
       - name: Save image to file
         run: podman save -o deployment-02-artifacts_image.tar deployment-02-artifacts.image
 
       - name: Archive deployment image as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deployment-02-artifacts_artifact
+          name: deployment-02-artifacts_artifact.tar
           path: deployment-02-artifacts_image.tar
 
   test:
